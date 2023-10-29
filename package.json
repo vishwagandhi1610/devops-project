@@ -1,0 +1,31 @@
+{
+  "name": "coffee-delivery-service",
+  "version": "1.0.0",
+  "description": "A simple coffee delivery service API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit ./test/*.test.js"
+  },
+  "dependencies": {
+    "axios": "^1.5.1",
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "coffee",
+    "delivery",
+    "service",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.ncsu.edu:CSC-519/project.git"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
+  }
+}
