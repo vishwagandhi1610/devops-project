@@ -1,0 +1,2 @@
+[myserver]
+152.7.179.26 ansible_user=vgandhi ansible_python_interpreter=/usr/bin/python3
