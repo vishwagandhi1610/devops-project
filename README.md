@@ -47,7 +47,7 @@ The proposed automated linting pipeline addresses this problem by providing a co
 
 ![pipeline design](https://github.com/vishwagandhi1610/devops-project/blob/main/assets/devopspipeline.drawio%20(3).png)
 
-## WORKFLOW:-
+## ☕ WORKFLOW:-
 
 1. The developer writes code using an editor (e.g., VS Code).
 2. Once the code is written, the developer pushes it to a "develop" branch on GitHub.
