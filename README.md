@@ -45,6 +45,23 @@ The proposed automated linting pipeline addresses this problem by providing a co
 
 ## ☕ PIPELINE DESIGN:-
 
+![pipeline design](https://github.com/vishwagandhi1610/devops-project/blob/main/assets/devopspipeline.drawio%20(3).png)
 
+## WORKFLOW:-
 
+1. The developer writes code using an editor (e.g., VS Code).
+2. Once the code is written, the developer pushes it to a "develop" branch on GitHub.
+3. GitHub contains various branches such as "Develop", "Release", and "Main".
+4. The building process triggers a GitHub Workflow.
+5. This workflow runs npm test to execute tests on the codebase.
+6. If the test passes, the next step is to push the Docker image of the application to a Docker Registry.
+7. In case of test failure, the workflow fails for that specific job, which is visually represented by a red line.
+8. If the test passes than the devloper creates a PR from develop to release branch.
+9. A self-hosted runner is used and the automated for pipeline runs.
+10. If linting fails, the pull request is denied.
+11. If the linting process passes, it proceeds to the release engineer for review.
+12. The release engineer reviews the pull request (PR) from the "develop" branch to the "release" branch.
+13. If the PR is approved, the release engineer is able to merge it. If not, the PR remains unmerged.
+14. Post-approval from the release engineer, the Ansible deploys the image from the  Docker Registry.
+15. Deployment is achieved using tools like Ansible and is deployed on the NCSU VCL.
 
