@@ -1,0 +1,79 @@
+
+- name: run node js project
+  hosts: myserver
+  become: yes
+  tasks:
+      - name: Update apt and cache
+        apt:
+            update_cache: yes
+            force_apt_get: yes
+            cache_valid_time: 3600
+
+      - name: Install nodejs and npm
+        apt:
+            pkg:
+                - nodejs
+                - npm
+            state: latest
+
+      - name: Update node version and use the latest one
+        shell: |
+            sudo npm cache clean -f && sudo npm install -g n && sudo n stable
+
+      - name: Copy Node.js app into the local machine
+        copy:
+            src: .
+            dest: /home/vgandhi/coffee_project
+            owner: root
+            group: root
+            mode: '0755'
+
+      - name: Download dependencies from package.json
+        command: npm install
+        args:
+            chdir: /home/vgandhi/coffee_project
+
+      - name: Start the app.js
+        command:
+            chdir: /home/vgandhi/node_app
+            cmd: sudo npm start
+        async: 1000
+        poll: 0
+
+      - name: Check if app is running
+        shell: ps aux | grep node
+        register: app_status
+
+      - debug:
+            msg: '{{ app_status.stdout_lines }}'
+
+      - name: Expose port 3000 with iptables
+        shell: 'sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT'
+
+      - name: Check if web server is running
+        wait_for:
+            host: localhost
+            port: 3000
+            state: started
+
+      - name: Check if route exists
+        uri:
+            url: http://localhost/ 
+            method: GET
+        register: curl_response
+
+      - debug:
+            msg: 'Curl Response: {{ curl_response.status }}'
+
+      - name: Check is website is running
+        uri:
+            url: 'http://localhost/'
+            return_content: yes
+            validate_certs: no
+            status_code:
+                - 200
+        register: response
+        until: response.status == 200
+        retries: 20
+        delay: 10
+ 
