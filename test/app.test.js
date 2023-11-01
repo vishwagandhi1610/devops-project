@@ -42,7 +42,7 @@ describe('Coffee Delivery Service API', () => {
     //                 done();
     //             });
     //     });
-    // });
+    });
 
     describe('GET /orders', () => {
         it('should return a list of placed orders', (done) => {
