@@ -59,9 +59,27 @@ The proposed automated linting pipeline addresses this problem by providing a co
 8. If the test passes than the devloper creates a PR from develop to release branch.
 9. A self-hosted runner is used and the automated for pipeline runs.
 10. If linting fails, the pull request is denied.
-11. If the linting process passes, it proceeds to the release engineer for review.
+11. If the linting process passes, it proceeds to the release engineer for review. (Branch protection rule)
 12. The release engineer reviews the pull request (PR) from the "develop" branch to the "release" branch.
 13. If the PR is approved, the release engineer is able to merge it. If not, the PR remains unmerged.
 14. Post-approval from the release engineer, the Ansible deploys the image from the  Docker Registry.
 15. Deployment is achieved using tools like Ansible and is deployed on the NCSU VCL.
 
+## ☕ CONSTRAINTS:-
+
+1. Consistent Code Style: Since linting is a step in the pipeline, developers must adhere to a consistent code style and format. Any deviation will result in the linting job failing.
+2. Testing: The npm test should pass without any errors before moving forward in the pipeline.
+3. Branching Strategy: Developers should always push their changes to the development branch and not directly to the main branch. This ensures that the main branch always has stable, tested code.
+4. Docker: Ensure that the app is containerized properly so that it can be pushed to and pulled from the Docker Registry seamlessly.
+5. Review Process: Changes should be thoroughly reviewed by a release engineer before merging into the main branch. This adds an additional layer of quality assurance.
+6. Infrastructure as Code: When deploying, ensure that all infrastructure changes are coded, using tools like Ansible, so that deployments are reproducible and consistent.
+7. Security: Ensure that secrets and credentials are not hardcoded in the code and are securely managed, possibly using secret management tools.
+
+## ☕ PIPELINE ARCHITECTURE COMPONENTS:-
+
+1. VS Code: The preferred Integrated Development Environment (IDE) for coding.
+2. GitHub: The version control system used for hosting the code repository.
+3. GitHub Workflow: Used to automate several process like testing, linting.
+4. Ansible: An open-source automation tool that deploys the app.
+5. NCSU VCL: The Virtual Computing Lab where the app is deployed.
+6. Docker: Used to run the application in a container environment.
