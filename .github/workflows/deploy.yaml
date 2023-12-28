@@ -1,0 +1,22 @@
+name: Ansible Deployment
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    runs-on: self-hosted 
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Run Ansible Playbook
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: False
+        GITHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        GITHUB_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: ansible-playbook -i hosts.yaml playbook.yaml --extra-vars "docker_username=${{ env.GITHUB_USERNAME }} docker_password=${{ env.GITHUB_PASSWORD }}"
+
