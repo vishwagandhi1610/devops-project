@@ -49,7 +49,7 @@ The proposed automated linting pipeline addresses this problem by providing a co
 
 ## ☕ PIPELINE DESIGN:-
 
-![pipeline design](https://github.ncsu.edu/vgandhi/devops-pipeline/blob/main/assets/pipeline_design.png)
+![pipeline design](https://github.com/vishwagandhi1610/devops-project/blob/main/assets/pipeline_design.png)
 
 ## ☕ WORKFLOW:-
 
