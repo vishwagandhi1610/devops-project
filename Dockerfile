@@ -7,6 +7,4 @@ COPY . .
 EXPOSE 3000
 CMD ["node", "app.js"]
 
-
-#docker build -t devops .
-#docker run -p 3000:3000 devops 
+#this is a comment

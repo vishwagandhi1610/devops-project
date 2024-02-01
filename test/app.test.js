@@ -33,15 +33,15 @@ describe('Coffee Delivery Service API', () => {
                 });
         });
 
-    //     it('should return an error for invalid coffee ID', (done) => {
-    //         request(app)
-    //             .post('/order')
-    //             .send({ coffeeId: 999, quantity: 2 })
-    //             .end((err, res) => {
-    //                 expect(res.statusCode).to.equal(400);
-    //                 done();
-    //             });
-    //     });
+        it('should return an error for invalid coffee ID', (done) => {
+            request(app)
+                .post('/order')
+                .send({ coffeeId: 999, quantity: 2 })
+                .end((err, res) => {
+                    expect(res.statusCode).to.equal(400);
+                    done();
+                });
+        });
     });
 
     describe('GET /orders', () => {
@@ -50,6 +50,7 @@ describe('Coffee Delivery Service API', () => {
                 .get('/orders')
                 .end((err, res) => {
                     expect(res.statusCode).to.equal(200);
+//                     expect(res.statusCode).to.equal(700);
                     expect(res.body).to.be.an('array');
                     done();
                 });

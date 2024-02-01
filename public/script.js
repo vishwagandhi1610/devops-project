@@ -23,3 +23,4 @@ function placeOrder(coffeeId) {
             alert('Error placing order.');
         });
 }
+

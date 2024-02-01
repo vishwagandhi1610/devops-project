@@ -1,0 +1,27 @@
+---
+- name: Deploy Docker Container
+  hosts: myserver
+  become: yes
+  vars:
+    docker_username: "{{ docker_username }}"
+    docker_password: "{{ docker_password }}"
+
+  tasks:
+    - name: Login to Docker Hub
+      community.docker.docker_login:
+        username: "{{ docker_username }}"
+        password: "{{ docker_password }}"
+
+    - name: Pull the Docker image from Docker Hub
+      community.docker.docker_image:
+        name: vishwagandhi16/devops-project:latest
+        source: pull
+
+    - name: Run Docker Container
+      community.docker.docker_container:
+        name: devops_container
+        image: vishwagandhi16/devops-project:latest
+        ports:
+          - "3000:3000"
+        state: started
+        restart_policy: always
