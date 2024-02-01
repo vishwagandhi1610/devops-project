@@ -4,8 +4,6 @@
 * A crucial step in our Continuous Deployment pipeline was the successful integration of ESLint. 
 * This tool significantly enhances code quality by enforcing consistent coding styles and identifying potential errors and bad patterns in JavaScript code. 
 * Its implementation in my process now checks the code quality automatically when a user creates a Pull Request (PR) from the develop to the release branch.
-* Relevant Commit: [Github commit](https://github.ncsu.edu/vgandhi/devops-pipeline/blob/4ef1fd81a116b816756f17dbc8668d7c80a81fc6/.eslintrc.js)
-* Relavant workflow commit: [Github commit](https://github.ncsu.edu/vgandhi/devops-pipeline/actions/runs/75196)
 * What ESLint Eliminates:
     * Syntax Errors: Catches syntax mistakes that could lead to runtime errors.
     * Code Smells: Identifies patterns that might be errors or lead to errors in the future.
@@ -19,7 +17,6 @@
 3. Initiation of Deployment Using Ansible: 
 * I've started work on automating the app deployment process using Ansible. 
 * For that I have created the Ansible playbook and hosts file. But I am facing an error so trying to fix that.
-* Relevant Commit: [Github commit](https://github.ncsu.edu/vgandhi/devops-pipeline/blob/develop/playbook.yaml)
 
 ## NEXT STEPS:-
 
